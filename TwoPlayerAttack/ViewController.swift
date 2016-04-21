@@ -9,50 +9,123 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var btnEnemyAttack: UIButton!
     @IBOutlet weak var btnPlayerAttack: UIButton!
     @IBOutlet weak var lblMessage: UILabel!
+    @IBOutlet weak var btnRestart: UIButton!
+    @IBOutlet weak var lblRestart: UILabel!
+    @IBOutlet weak var lblPlayerAttack: UILabel!
+    @IBOutlet weak var lblEnemyAttack: UILabel!
     
     var displayMessage: String = ""
-    var player: Enemy!
-    var enemy: Enemy!
+    var currentPlayer: Enemy!
+    var currentEnemy: Enemy!
+    var winString: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gameStart()
         
     }
-
     
-    func getRandomEnemy() {
-        let rand = Int(arc4random_uniform(2))
+    
+    func gameStart(){
+        lblMessage.text = "Welcome !"
+        currentPlayer = Kimara(startingHp: 50, attackPwr: 20)
+        currentEnemy = DevilWizard(startingHp: 60, attackPwr: 15)
+        btnRestart.hidden = true
+        lblRestart.hidden = true
+        btnEnemyAttack.hidden = false
+        btnPlayerAttack.hidden = false
+        lblEnemyAttack.hidden = false
+        lblPlayerAttack.hidden = false
+        btnPlayerAttack.enabled = true
+        btnEnemyAttack.enabled = true
         
-        if rand == 0{
         
-            enemy = Kimara(startingHp: 50, attackPwr: 20)
-            btnEnemyAttack.enabled = true
-            btnPlayerAttack.enabled = false
-        } else {
-            enemy = DevilWizard(startingHp: 60, attackPwr: 15)
-            btnPlayerAttack.enabled = true
-            btnEnemyAttack.enabled = false
+    }
+    
+    @IBAction func onRestartBtnTouch(sender: AnyObject) {
+        gameStart()
+    }
+    
+    @IBAction func onEnemyAttackBtnTouch(sender: AnyObject) {
+        
+        btnPlayerAttack.enabled = false
+        currentPlayer.attempAttack(currentEnemy.attackPwr)
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "enablePlayerButton", userInfo: nil, repeats: false)
+        
+        
+        if !getGameState(){
+            findWinner()
+            lblMessage.text = winString
+            endGame()
         }
         
         
-    
-    
-    
-    }
-    
-    
-   
-    @IBAction func onEnemyAttackBtnTouch(sender: AnyObject) {
     }
     
     
     @IBAction func onPlayerAttackBtnTouch(sender: AnyObject) {
+        
+        
+        btnEnemyAttack.enabled = false
+        currentEnemy.attempAttack(currentPlayer.attackPwr)
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "enableEnemyButton", userInfo: nil, repeats: false)
+        
+        
+        if !getGameState() {
+            findWinner()
+            lblMessage.text = winString
+            endGame()
+        }
+        
     }
-  
+    
+    
+    func enablePlayerButton() {
+        btnPlayerAttack.enabled = true
+    }
+    
+    func enableEnemyButton() {
+        btnEnemyAttack.enabled = true
+    }
+    
+    func getGameState() -> Bool{
+        
+        if (currentPlayer.hp <= 0) || (currentEnemy.hp <= 0) {
+            return false
+        }
+        else {
+            return true
+        }
+        
+    }
+    
+    func findWinner() {
+        if currentPlayer.hp <= 0 {
+            winString = "Kimara is the Winnner !"
+        }
+        else if currentEnemy.hp <= 0 {
+            winString = "Devil Wizard is the Winner ! "
+            
+        }
+        
+    }
+    
+    func endGame() {
+        btnEnemyAttack.enabled = false
+        btnPlayerAttack.enabled = false
+        btnEnemyAttack.hidden = true
+        btnPlayerAttack.hidden = true
+        lblEnemyAttack.hidden = true
+        lblPlayerAttack.hidden = true
+        btnRestart.hidden = false
+        lblRestart.hidden = false
+        
+    }
 }
 

@@ -103,6 +103,25 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dp-HV-LRa" userLabel="restartBtn">
+                                <rect key="frame" x="224" y="216" width="151" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="151" id="AbT-De-kg5"/>
+                                    <constraint firstAttribute="height" constant="41" id="vV7-qI-3sM"/>
+                                </constraints>
+                                <state key="normal" image="player1attackbtn">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRestartBtnTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sma-pI-0gr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RESTART" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcQ-g6-WVF">
+                                <rect key="frame" x="259" y="226" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -121,8 +140,10 @@
                             <constraint firstItem="BTf-Pi-WXq" firstAttribute="centerY" secondItem="nFJ-mo-Cu0" secondAttribute="centerY" id="XPJ-Xf-lCP"/>
                             <constraint firstItem="R5u-hf-Edg" firstAttribute="centerX" secondItem="8jX-WD-3gE" secondAttribute="centerX" id="Xst-Rm-r3S"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="stW-I0-3e0" secondAttribute="bottom" id="ZbK-Ov-6o3"/>
+                            <constraint firstItem="3dp-HV-LRa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cqU-n0-8SD"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qbc-Ls-Nig" secondAttribute="bottom" id="dbd-NY-amc"/>
                             <constraint firstItem="nFJ-mo-Cu0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dbv-Uu-XcM"/>
+                            <constraint firstItem="XcQ-g6-WVF" firstAttribute="centerX" secondItem="3dp-HV-LRa" secondAttribute="centerX" id="dgV-pn-o1C"/>
                             <constraint firstItem="WYG-lz-Z6X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="e4b-BM-Ar0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nFJ-mo-Cu0" secondAttribute="bottom" constant="13" id="eZh-5C-ZwR"/>
                             <constraint firstItem="5Fs-7w-Z39" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="eo6-yC-2wl"/>
@@ -132,17 +153,23 @@
                             <constraint firstItem="stW-I0-3e0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="323" id="nDU-35-3dM"/>
                             <constraint firstItem="lEk-LE-oWK" firstAttribute="centerY" secondItem="8jX-WD-3gE" secondAttribute="centerY" id="oeK-OA-64n"/>
                             <constraint firstItem="MTk-2a-QSN" firstAttribute="centerX" secondItem="5Fs-7w-Z39" secondAttribute="centerX" id="vae-Hz-S3z"/>
+                            <constraint firstItem="XcQ-g6-WVF" firstAttribute="centerY" secondItem="3dp-HV-LRa" secondAttribute="centerY" id="wat-Bs-lni"/>
+                            <constraint firstItem="3dp-HV-LRa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zyR-3a-0LW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnEnemyAttack" destination="8jX-WD-3gE" id="lV0-Ub-qYx"/>
                         <outlet property="btnPlayerAttack" destination="5Fs-7w-Z39" id="6Zd-kC-9Ar"/>
+                        <outlet property="btnRestart" destination="3dp-HV-LRa" id="ZkM-ql-VQ6"/>
+                        <outlet property="lblEnemyAttack" destination="lEk-LE-oWK" id="GtL-lc-hez"/>
                         <outlet property="lblMessage" destination="BTf-Pi-WXq" id="l71-hC-GXh"/>
+                        <outlet property="lblPlayerAttack" destination="u6H-2b-uZh" id="f02-gR-suE"/>
+                        <outlet property="lblRestart" destination="XcQ-g6-WVF" id="2O8-pc-R5e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="435" y="436"/>
+            <point key="canvasLocation" x="425" y="459"/>
         </scene>
     </scenes>
     <resources>
