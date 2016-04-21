@@ -70,6 +70,9 @@
                                     <constraint firstAttribute="height" constant="48" id="h3F-JS-dWY"/>
                                 </constraints>
                                 <state key="normal" image="player1attackbtn"/>
+                                <connections>
+                                    <action selector="onEnemyAttackBtnTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6He-b7-XXW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fs-7w-Z39" userLabel="plAttackBtn">
                                 <rect key="frame" x="369" y="60" width="164" height="48"/>
@@ -78,6 +81,9 @@
                                     <constraint firstAttribute="height" constant="48" id="HTT-eC-iHy"/>
                                 </constraints>
                                 <state key="normal" image="player2attackbtn"/>
+                                <connections>
+                                    <action selector="onPlayerAttackBtnTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nmd-9S-lQL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ATTACK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEk-LE-oWK">
                                 <rect key="frame" x="106" y="73" width="85" height="21"/>
